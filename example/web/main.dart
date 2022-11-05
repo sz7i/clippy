@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'package:clippy/browser.dart' as clippy;
 
-main() {
+void main() {
   final copyTextBtn = document.querySelector('.copy-text-btn');
 
   final copyElementBtn = document.querySelector('.copy-element-btn');
