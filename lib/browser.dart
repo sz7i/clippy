@@ -8,7 +8,7 @@ Future<bool> write([input]) async {
   if (input is Element) {
     return await clipboard.write(input);
   } else if (input is String) {
-    return await (_writeText(input) as FutureOr<bool>);
+    return await _writeText(input);
   } else {
     return await clipboard.write();
   }
@@ -16,7 +16,7 @@ Future<bool> write([input]) async {
 
 Stream<String> get onPaste => clipboard.onPaste;
 
-Future<Null> _writeText(String text) async {
+Future<void> _writeText(String text) async {
   final element = _createFakeElement(text);
   document.body!.children.add(element);
   await clipboard.write(element);
