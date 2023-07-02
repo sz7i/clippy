@@ -16,11 +16,12 @@ Future<bool> write([input]) async {
 
 Stream<String> get onPaste => clipboard.onPaste;
 
-Future<void> _writeText(String text) async {
+Future<bool> _writeText(String text) async {
   final element = _createFakeElement(text);
   document.body!.children.add(element);
   await clipboard.write(element);
   document.body!.children.remove(element);
+  return true;
 }
 
 TextAreaElement _createFakeElement(String text) {
