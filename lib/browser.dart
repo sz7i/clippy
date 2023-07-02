@@ -19,9 +19,9 @@ Stream<String> get onPaste => clipboard.onPaste;
 Future<bool> _writeText(String text) async {
   final element = _createFakeElement(text);
   document.body!.children.add(element);
-  await clipboard.write(element);
+  final done = await clipboard.write(element);
   document.body!.children.remove(element);
-  return true;
+  return done;
 }
 
 TextAreaElement _createFakeElement(String text) {
